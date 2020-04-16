@@ -91,24 +91,22 @@
                        Source="{Binding SelectedCustomer.PicturePath}"
                        Stretch="Uniform"/>
             <StackPanel Grid.Row="7" Grid.ColumnSpan="2" Margin="3">
-                <Button Content="Nouvelle facture" Width="150" HorizontalAlignment="Left"/>
-                
-                <!--<Grid DataContext="{Binding VM}">-->
-                    <DataGrid ItemsSource="{Binding SelectedCustomer.Invoices}" AutoGenerateColumns="False">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Facture" Binding="{Binding Info}"/>
-                            <DataGridTextColumn Header="Total" Binding="{Binding Total, StringFormat=C2}"/>
-                            <DataGridTemplateColumn Header="Actions">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button Command="{Binding DataContext.DisplayInvoiceCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DockPanel}}" CommandParameter="{Binding}">Voir</Button>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                <!--</Grid>-->
-                
+                <Button Content="Nouvelle facture" Width="150" HorizontalAlignment="Left"
+                        Command="{Binding DataContext.NewInvoiceCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DockPanel}}" CommandParameter="{Binding SelectedCustomer}"/>
+                <DataGrid ItemsSource="{Binding SelectedCustomer.Invoices}" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Facture" Binding="{Binding Info}"/>
+                        <DataGridTextColumn Header="Total" Binding="{Binding Total, StringFormat=C2}"/>
+                        <DataGridTemplateColumn Header="Actions">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Command="{Binding DataContext.DisplayInvoiceCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DockPanel}}" CommandParameter="{Binding}">Voir</Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
             </StackPanel>
 
 
