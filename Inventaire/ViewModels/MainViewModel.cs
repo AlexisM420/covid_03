@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 
 namespace BillingManagement.UI.ViewModels
 {
@@ -19,7 +20,7 @@ namespace BillingManagement.UI.ViewModels
 		}
 
 		CustomerViewModel customerViewModel;
-		InvoiceViewModel invoiceViewModel;
+		public InvoiceViewModel invoiceViewModel;
 
 		public ChangeViewCommand ChangeViewCommand { get; set; }
 
@@ -42,6 +43,10 @@ namespace BillingManagement.UI.ViewModels
 					VM = customerViewModel;
 					break;
 				case "invoices":
+					VM = invoiceViewModel;
+					break;
+				case "invoiceDetail":
+					MessageBox.Show("woaw");
 					VM = invoiceViewModel;
 					break;
 			}
