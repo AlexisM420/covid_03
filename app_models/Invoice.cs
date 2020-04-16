@@ -48,10 +48,9 @@ namespace BillingManagement.Models
 
         public double FedTax => SubTotal * 0.05;
         public double ProvTax => SubTotal * 0.09975;
-
         public double Total => SubTotal + FedTax + ProvTax;
 
-        public string Info => $"{CreationDateTime} : {Total}";
+        public string Info => $"{CreationDateTime} : {Total:C2}";
 
         public Invoice()
         {
