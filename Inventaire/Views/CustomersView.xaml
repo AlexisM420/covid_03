@@ -86,17 +86,31 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-
-
             </StackPanel>
-
-
-            <StackPanel Grid.Row="7" Grid.Column="2" Margin="6">
-                <Button Content="Supprimer client" Command="{Binding DeleteCustomerCommand}" CommandParameter="{Binding SelectedCustomer}"/>
-            </StackPanel>
-            <Image Margin="6" Grid.Row="8"
+            <Image HorizontalAlignment="Right" Margin="0 5 0 0" Grid.Row="5" Grid.Column="2" MaxHeight="150" MaxWidth="150"
                        Source="{Binding SelectedCustomer.PicturePath}"
                        Stretch="Uniform"/>
+            <StackPanel Grid.Row="7" Grid.ColumnSpan="2" Margin="3">
+                <Button Content="Nouvelle facture" Width="150" HorizontalAlignment="Left"/>
+                <DataGrid ItemsSource="{Binding SelectedCustomer.Invoices}" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Facture" Binding="{Binding Info}"/>
+                        <DataGridTextColumn Header="Total" Binding="{Binding Total}"/>
+                        <DataGridTemplateColumn Header="Actions">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Command="{Binding ChangeViewCommand}" CommandParameter="invoiceDetail">Voir</Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="8" Grid.Column="2" Margin="6">
+                <Button Content="Supprimer client" Command="{Binding DeleteCustomerCommand}" CommandParameter="{Binding SelectedCustomer}"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>
